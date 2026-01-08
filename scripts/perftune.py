@@ -728,7 +728,7 @@ class NetPerfTuner(PerfTunerBase):
         """
         Returns the list of IRQ numbers for the given interface.
         """
-        return self.__nic2irqs[iface]
+        return self.__nic2irqs.get(iface, [])
 
     def __setup_rfs(self, iface):
         rps_limits = glob.glob("/sys/class/net/{}/queues/*/rps_flow_cnt".format(iface))
